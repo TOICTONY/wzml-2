@@ -220,7 +220,7 @@ class WZMLStyle:
     COUNT_TYPE = '┠<b>📜 Type: </b>{COUNT_TYPE}\n'
     COUNT_SUB =  '┠<b>🗂️ SubFolders: </b>{COUNT_SUB}\n'
     COUNT_FILE = '┠<b>📂 Files: </b>{COUNT_FILE}\n'
-    COUNT_CC =   '┗<b>👤 User: </b>{COUNT_CC}\n\n<a href="https://t.me/ACE_ML"><b>♥️ 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗕𝘆 @𝗔𝗖𝗘_𝗠𝗟</b></a>'
+    COUNT_CC =   '┗<b>👤 User: </b>{COUNT_CC}\n\n<a href="<a href="https://t.me/+IDmU1doag140NGI1"><b>♥️ 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗕𝘆 @PRIVAET_KING</b></a>'
     # ---------------------
 
     # LIST ---> gd_list.py
