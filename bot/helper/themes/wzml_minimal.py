@@ -1,7 +1,7 @@
 class WZMLStyle:
     # ----------------------
     # async def start(client, message) ---> __main__.py
-    ST_BN1_NAME = '🛠️ Updates'
+    ST_BN1_NAME = '🛠️ PG'
     ST_BN1_URL = 'https://t.me/+IDmU1doag140NGI1'
     ST_BN2_NAME = '😘 Use Me'
     ST_BN2_URL = 'https://t.me/+IDmU1doag140NGI1'
