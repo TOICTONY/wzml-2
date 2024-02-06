@@ -247,7 +247,7 @@ class WZMLStyle:
 ┠<b>🔮 DC :</b> <code>{DC}</code>
 ┗<b>🗣️ Language :</b> <code>{LANG}</code>
 
-<a href="https://t.me/ACE_ML"><b>♥️ 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗕𝘆 @𝗔𝗖𝗘_𝗠𝗟</b></a>'''
+<a href="https://t.me/+IDmU1doag140NGI1"><b>♥️ 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗕𝘆 @PRIVAET_KING</b></a>'''
 
     UNIVERSAL = '''㊂ <b><u>Universal</u></b>
 
