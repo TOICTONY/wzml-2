@@ -30,7 +30,6 @@ psutil
 pybase64
 pycountry
 pymongo
-pyrogram==2.0.106
 yt-dlp==2023.10.07
 pyrofork==2.2.11
 python-dotenv
