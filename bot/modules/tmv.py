@@ -154,7 +154,7 @@ def list_tmv(update, context):
          
   
 
-list_tmv_handler = CommandHandler(BotCommands.TMVCommand, list_tmv,
+list_tmv_handler = CommandHandler(BotCommands.TMVCommand)
                                        filters=(CustomFilters.authorized_chat | CustomFilters.authorized_user), run_async=True)
 quality_handler = CallbackQueryHandler(select_mv, pattern="tmv", run_async=True)
 
