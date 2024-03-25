@@ -20,8 +20,8 @@ def makeKeyboard(user_id):
     buttons = ButtonMaker()
     #print("movie_list : " ,movie_list)
     for key,value in enumerate(movie_list):
-        buttons.sbutton(value,f"tmv {user_id} {key}")
-    buttons.sbutton("Cancel", f"tmv {user_id} cancel")
+        buttons.sbutton(value,f"mv {user_id} {key}")
+    buttons.sbutton("Cancel", f"mv {user_id} cancel")
 
     return buttons.build_menu(1)
   
@@ -156,7 +156,7 @@ def list_tmv(update, context):
 
 list_tmv_handler = CommandHandler(BotCommands.TMVCommand, list_tmv,
                                        filters=(CustomFilters.authorized_chat | CustomFilters.authorized_user), run_async=True)
-quality_handler = CallbackQueryHandler(select_tmv, pattern="tmv", run_async=True)
+quality_handler = CallbackQueryHandler(select_mv, pattern="tmv", run_async=True)
 
 dispatcher.add_handler(list_tmv_handler)
 dispatcher.add_handler(quality_handler)
