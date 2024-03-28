@@ -49,7 +49,7 @@ async def _mirror_leech(client, message, isQbit=False, isLeech=False, sameDir=No
                 '-uz': False, '-unzip': False,
                 '-z': False, '-zip': False,
                 '-up': '', '-upload': '',
-                '-rcf': '', 
+                '-rcf': '',
                 '-u': '', '-user': '',
                 '-p': '', '-pass': '',
                 '-id': '',
@@ -93,7 +93,7 @@ async def _mirror_leech(client, message, isQbit=False, isLeech=False, sameDir=No
     reply_to      = None
     file_         = None
     session       = ''
-    
+
     if not isinstance(seed, bool):
         dargs = seed.split(':')
         ratio = dargs[0] or None
@@ -107,7 +107,7 @@ async def _mirror_leech(client, message, isQbit=False, isLeech=False, sameDir=No
         if len(dargs) == 2:
             bulk_end = dargs[1] or None
         isBulk = True
-        
+
     if drive_id and is_gdrive_link(drive_id):
         drive_id = GoogleDriveHelper.getIdFromUrl(drive_id)
 
@@ -178,7 +178,7 @@ async def _mirror_leech(client, message, isQbit=False, isLeech=False, sameDir=No
         tag = f"@{username}"
     else:
         tag = message.from_user.mention
-        
+
     decrypter = None
     if not link and (reply_to := message.reply_to_message):
         if reply_to.text:
@@ -334,7 +334,7 @@ async def _mirror_leech(client, message, isQbit=False, isLeech=False, sameDir=No
             return
 
     listener = MirrorLeechListener(message, compress, extract, isQbit, isLeech, tag, select, seed,
-                                    sameDir, rcf, up, join, drive_id=drive_id, index_link=index_link, 
+                                    sameDir, rcf, up, join, drive_id=drive_id, index_link=index_link,
                                     source_url=org_link or link, leech_utils={'screenshots': sshots, 'thumb': thumb})
 
     if file_ is not None:
@@ -389,7 +389,7 @@ async def wzmlxcb(_, query):
         try:
             while len(Loglines) <= 3500:
                 Loglines = parseline(logFileLines[-ind]) + '\n' + Loglines
-                if ind == len(logFileLines): 
+                if ind == len(logFileLines):
                     break
                 ind += 1
             startLine = f"<b>Showing Last {ind} Lines from log.txt:</b> \n\n----------<b>START LOG</b>----------\n\n"

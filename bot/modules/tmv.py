@@ -24,11 +24,11 @@ def makeKeyboard(user_id):
     buttons.sbutton("Cancel", f"mv {user_id} cancel")
 
     return buttons.build_menu(1)
-  
+
 def tamilmv():
     mainUrl = 'https://www.1tamilmv.tax/'
     mainlink = []
-    
+
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36',
         'sec-ch-ua': '"Chromium";v="106", "Google Chrome";v="106", "Not;A=Brand";v="99"',
@@ -36,8 +36,8 @@ def tamilmv():
         'Connection':'Keep-alive',
         'sec-ch-ua-platform': '"Windows"',
     }
-    
-    global movie_dict 
+
+    global movie_dict
     movie_dict = {}
     global real_dict
     real_dict  = {}
@@ -51,7 +51,7 @@ def tamilmv():
     movie_list = []
 
     num = 0
-    
+
     temps = soup.find_all('div',{'class' : 'ipsType_break ipsContained'})
 
     for i in range(21):
@@ -60,13 +60,13 @@ def tamilmv():
         links = temps[i].find('a')['href']
         content = str(links)
         linker.append(content)
-        
+
     for element in badtitles:
         realtitles.append(element.strip())
         movie_dict[element.strip()] = None
     #print(badtitles)
     movie_list = list(movie_dict)
-        
+
     for url in linker:
 
         html = requests.request("GET",url)
@@ -79,7 +79,7 @@ def tamilmv():
         for i in soup.find_all('a', href=True):
             if i['href'].startswith('magnet'):
                 mag.append(i['href'])
-                
+
         for a in soup.findAll('a', {"data-fileext": "torrent", 'href': True}):
             filelink.append(a['href'])
             alltitles.append(a.text)
@@ -93,9 +93,9 @@ def tamilmv():
               #real_dict[movie_list[num]].append((f"*{alltitles[p]}* -->\n🧲 `{mag[p]}`\n🗒️->[Torrent file]({filelink[p]})"))
             except:
               pass
-            
+
         num = num + 1
-        
+
 def select_mv(update, context):
     query = update.callback_query
     user_id = query.from_user.id
@@ -112,11 +112,11 @@ def select_mv(update, context):
         task_info = listener_dict[task_id]
     except:
         return editMessage("This is an old task", msg)
-    
+
     uid = task_info[0]
     u_name = task_info[1]
     '''
-    
+
     if user_id != uid and not CustomFilters._owner_query(user_id):
         return query.answer(text="This task is not for you!", show_alert=True)
     #print("data1 : ", data)
@@ -132,27 +132,27 @@ def select_mv(update, context):
                     LOGGER.info(f"{file_data}")
                     title = file_data["Title"]
                     torrent_file_url = file_data["TorrentFile"]
-                    
+
                     # Download the torrent file
                     response = requests.get(torrent_file_url)
                     file_name = f"{title}.torrent"
                     query.bot.send_document(chat_id=msg.chat_id, document=response.content, filename=file_name, caption=title + "\n\nPGV_da")
-                    
+
             else:
                 sendMessage(f"<b>Torrent Files Not Available</b>", query.bot, msg)
 
 def list_tmv(update, context):
     msg_id = update.message.message_id
-    user_id = update.message.from_user.id 
+    user_id = update.message.from_user.id
     u_name = update.message.from_user.first_name
-    
+
     lm = sendMessage("<b>Please wait for 10 seconds...🤖</b>", context.bot, update.message)
     tamilmv()
     deleteMessage(context.bot, lm)
     #listener_dict[msg_id] = [user_id, u_name]
     sendMarkup("Select a Movie from the list 🙂 : ", context.bot, update.message, reply_markup=makeKeyboard(user_id))
-         
-  
+
+
 
 list_tmv_handler = CommandHandler(BotCommands.TMVCommand, list_tmv, filters=CustomFilters.authorized_chat & ~CustomFilters.blacklisted)
 quality_handler = CallbackQueryHandler(select_mv, pattern="tmv", run_async=True)

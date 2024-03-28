@@ -59,7 +59,7 @@ class WZMLStyle:
 ╰ ▸<b>U :</b> {disk_u} ┃ <b>F :</b> {disk_f} ┃ <b>T :</b> {disk_t}
 
 <a href="https://t.me/+CLMp3nb8MQE5N2Jl"><b> 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗕𝘆 PRIVATE_KING</b></a>
-    
+
     '''
     SYS_STATS = '''<b>🛠 <u>𝙎𝙮𝙨𝙩𝙚𝙢 𝙎𝙩𝙖𝙩𝙞𝙨𝙩𝙞𝙘𝙨</u></b>
 
@@ -146,7 +146,7 @@ class WZMLStyle:
 ------------------------------------------
 {Source}
 ------------------------------------------\n\n"""
-    
+
     # async def __msg_to_reply(self): ---> pyrogramEngine.py
     PM_START =            "🏁 <b><u>Leech Started</u> :</b>\n\n<b>💡 Source :</b> <a href='{msg_link}'>Click Here</a>"
     L_LOG_START =           "🏁 <b><u>Leech Started</u> :</b>\n\n╭ ▸<b>👤 User :</b> {mention}┃ <b>🆔 ID :</b> <code>{uid}</code>\n╰ ▸<b>💡 Source :</b> <a href='{msg_link}'>Click Here</a>"
@@ -164,7 +164,7 @@ class WZMLStyle:
     PM_BOT_MSG =            '<b><i>Files have been Sent Above!</i></b>\n'
     L_BOT_MSG =             '<b><i>Files have been Sent in Bot PM!</i></b>\n'
     L_LL_MSG =              '<b><i>Files have been Sent. Access via Links!</i></b>\n'
-    
+
     # ----- MIRROR -------
     M_TYPE =                '┠ ▸<b>📜 Type: </b>{Mimetype}\n'
     M_SUBFOLD =             '┠ ▸<b>🗂️ SubFolders: </b>{Folder}\n'
@@ -266,13 +266,13 @@ class WZMLStyle:
 
 ⌬ <b><u>Bot Stats</u></b>
 ╭ ▸<b>🖥️ CPU: <i>{cpu}% </i>┃ 💿 RAM: <i>{ram}% </i></b>
-╰ ▸<b>📭 Free: <i>{free}</i> ┃ ⏰ Uptime: <i>{uptime}</i></b> 
+╰ ▸<b>📭 Free: <i>{free}</i> ┃ ⏰ Uptime: <i>{uptime}</i></b>
     '''
     # ---------------------
 
-    # USER Setting --> user_setting.py 
+    # USER Setting --> user_setting.py
     USER_SETTING = '''👩🏻‍🚀 <b><u>User Settings</u></b>
-        
+
 ╭ ▸<b>👤 Name :</b> {NAME}
 ┠ ▸<b>🔖 Username :</b> {USERNAME}
 ┠ ▸<b>🆔 ID :</b> <code>{ID}</code>

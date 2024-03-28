@@ -12,7 +12,7 @@ class Gofile:
         self.api_url = "https://api.gofile.io/"
         self.dluploader = dluploader
         self.token = token
-        
+
 
     @staticmethod
     async def is_goapi(token):
@@ -38,7 +38,7 @@ class Gofile:
     async def __getAccount(self, check_account=False):
         if self.token is None:
             raise Exception()
-        
+
         api_url = f"{self.api_url}accounts/{self.token.split(':')[0]}?token={self.token.split(':')[1]}&allDetails=true"
         async with ClientSession() as session:
             resp = await (await session.get(url=api_url)).json()
@@ -46,14 +46,14 @@ class Gofile:
                 return resp["status"] == "ok" if True else await self.__resp_handler(resp)
             else:
                 return await self.__resp_handler(resp)
-        
+
     async def upload_folder(self, path, folderId=None):
         if not await aiopath.isdir(path):
             raise Exception(f"Path: {path} is not a valid directory")
-            
+
         folder_data = await self.create_folder((await self.__getAccount())["rootFolder"], ospath.basename(path))
         await self.__setOptions(contentId=folder_data["id"], option="public", value="true")
-    
+
         folderId = folderId or folder_data["id"]
         folder_ids = {".": folderId}
         for root, _, files in await sync_to_async(walk, path):
@@ -67,7 +67,7 @@ class Gofile:
             for file in files:
                 file_path = ospath.join(root, file)
                 up = await self.upload_file(file_path, currFolderId)
-                
+
         return folder_data["code"]
 
     async def upload_file(self, path: str, folderId: str = "", description: str = "", password: str = "", tags: str = "", expire: str = ""):
@@ -89,7 +89,7 @@ class Gofile:
             req_dict["tags"] = tags
         if expire:
             req_dict["expire"] = expire
-        
+
         if self.dluploader.is_cancelled:
             return
         new_path = ospath.join(ospath.dirname(path), ospath.basename(path).replace(' ', '.'))
@@ -97,7 +97,7 @@ class Gofile:
         self.dluploader.last_uploaded = 0
         upload_file = await self.dluploader.upload_aiohttp(f"https://{server}.gofile.io/contents/uploadfile", new_path, "file", req_dict)
         return await self.__resp_handler(upload_file)
-        
+
     async def upload(self, file_path):
         if not await self.is_goapi(self.token):
             raise Exception("Invalid Gofile API Key, Recheck your account !!")
@@ -114,7 +114,7 @@ class Gofile:
     async def create_folder(self, parentFolderId, folderName):
         if self.token is None:
             raise Exception()
-        
+
         async with ClientSession() as session:
             async with session.put(url=f"{self.api_url}contents/createFolder",
                 data={
@@ -128,7 +128,7 @@ class Gofile:
     async def __setOptions(self, contentId, option, value):
         if self.token is None:
             raise Exception()
-        
+
         if not option in ["public", "password", "description", "expire", "tags"]:
             raise Exception(f"Invalid GoFile Option Specified : {option}")
         async with ClientSession() as session:
@@ -144,7 +144,7 @@ class Gofile:
     async def get_content(self, contentId):
         if self.token is None:
             raise Exception()
-        
+
         async with ClientSession() as session:
             async with session.get(url=f"{self.api_url}contents/{contentId}&token={self.token}") as resp:
                 return await self.__resp_handler(await resp.json())

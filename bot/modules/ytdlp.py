@@ -244,8 +244,8 @@ async def _ytdl(client, message, isLeech=False, sameDir=None, bulk=[]):
     text = message.text.split('\n')
     input_list = text[0].split(' ')
     qual = ''
-    arg_base = {'link': '', 
-                '-i': 0, 
+    arg_base = {'link': '',
+                '-i': 0,
                 '-m': '', '-sd': '', '-samedir': '',
                 '-s': False, '-select': False,
                 '-opt': '', '-options': '',
@@ -362,7 +362,7 @@ async def _ytdl(client, message, isLeech=False, sameDir=None, bulk=[]):
     user_dict = user_data.get(user_id, {})
 
     opt = opt or user_dict.get('yt_opt') or config_dict['YT_DLP_OPTIONS']
-    
+
     if username := message.from_user.username:
         tag = f'@{username}'
     else:
@@ -518,7 +518,7 @@ async def _ytdl(client, message, isLeech=False, sameDir=None, bulk=[]):
     playlist = 'entries' in result
     ydl = YoutubeDLHelper(listener)
     await ydl.add_download(link, path, name, qual, playlist, opt)
-    
+
 
 
 async def ytdl(client, message):
